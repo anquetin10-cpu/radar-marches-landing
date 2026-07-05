@@ -38,6 +38,7 @@
   .price{text-align:center;background:var(--fonce);color:#fff;border-radius:16px;padding:36px}
   .price .big{font-size:40px;font-weight:700}
   .price .small{color:#94a3b8}
+  .success{display:none;margin:18px auto 0;max-width:460px;border:1px solid #86efac;background:#f0fdf4;color:#166534;border-radius:10px;padding:12px 14px;font-size:14px}
   footer{padding:30px 0;text-align:center;color:#94a3b8;font-size:13px}
   @media(max-width:560px){.grid{grid-template-columns:1fr}h1{font-size:27px}}
 </style>
@@ -59,6 +60,7 @@
         <input type="text" name="zone" placeholder="Département(s)" required>
         <button type="submit">Recevoir le radar</button>
       </form>
+      <p class="success" id="signup-success">Inscription reçue. Vous allez recevoir le prochain radar par email.</p>
       <p class="note">1er mois offert. Sans carte. Sans engagement. Désinscription en un clic.</p>
     </div>
   </div>
@@ -114,9 +116,9 @@
         <input type="hidden" name="_template" value="table">
         <input type="email" name="email" placeholder="votre@email.fr" required>
         <input type="text" name="societe" placeholder="Société" required>
-        <input type="text" name="zone" placeholder="Département(s)" required>
-        <button type="submit">Rejoindre la liste</button>
-      </form>
+          <input type="text" name="zone" placeholder="Département(s)" required>
+          <button type="submit">Rejoindre la liste</button>
+        </form>
       </div>
     </div>
   </div>
@@ -125,6 +127,12 @@
 <footer>
   <div class="wrap">Radar Marchés · données publiques BOAMP · Ce service compile des informations publiques, sans affiliation avec les acheteurs cités.</div>
 </footer>
+<script>
+if (new URLSearchParams(window.location.search).get("inscription") === "ok") {
+  var success = document.getElementById("signup-success");
+  if (success) success.style.display = "block";
+}
+</script>
 
 </body>
 </html>
