@@ -115,10 +115,11 @@
 </footer>
 <script>
 function radarSignup(f){
-  var e = encodeURIComponent(f.email.value.trim());
+  // Adresse assemblée à l'exécution : jamais en clair dans le source (anti-scraping).
+  var to = ["anquetin","10"].join("") + "@" + ["gmail","com"].join(".");
   var subject = encodeURIComponent("Inscription Radar Marchés");
   var body = encodeURIComponent("Bonjour, je souhaite recevoir le Radar Marchés (nettoyage). Mon email : " + f.email.value.trim());
-  window.location.href = "mailto:anquetin10@gmail.com?subject=" + subject + "&body=" + body;
+  window.location.href = "mailto:" + to + "?subject=" + subject + "&body=" + body;
   return false;
 }
 </script>
